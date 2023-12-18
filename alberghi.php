@@ -75,7 +75,8 @@
                 <tbody>
                     <?php
                         foreach ($hotels as $hotel) {
-                            if ($voto <= $hotel["vote"]) {
+                            // if che mi fa comparire gli hotel con voto >=
+                            if ($hotel["vote"] >= $voto) {
                                 echo "<tr class='text-center'>
                                 <td>".$hotel["name"]."</td>
                                 <td>".$hotel["description"]."</td>";
@@ -92,6 +93,7 @@
                                 </tr>";
 
                             } else if ($voto == "") {
+                                // se non viene inserito nessun voto mi fa vedere la lista completa
                                 echo "<tr class='text-center'>
                                 <td>".$hotel["name"]."</td>
                                 <td>".$hotel["description"]."</td>";

@@ -13,6 +13,7 @@
         <div class="container">
             <h1 class="text-center my-3">Cerca Hotel per voto</h1>
 
+            <!-- form -->
             <form action="alberghi.php">
                 <p>Inserisci un voto da 1 a 5</p>
                 <input type="number" min="1" max="5" name="vote">
