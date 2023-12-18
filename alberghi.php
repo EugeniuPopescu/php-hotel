@@ -57,29 +57,37 @@
         <div class="container">
             <h1 class="text-center my-3">Hotels</h1>
 
-            <?php
-                foreach ($hotels as $hotel) {
-                    echo $name = $hotel['name'];
-                    echo '<br>';
-                    echo $description = $hotel['description'];
-                    echo '<br>';
-
-                    // ciclo if parcheggio 
-                    if ($hotel['parking'] === true) {
-                        echo $parking = 'Yes private parking';
-                    } else {
-                        echo $parking = 'No private parking';
-                    }
-                
-                    echo '<br>';
-                    echo $vote = $hotel['vote'];
-                    echo '<br>';
-                    echo $distance_to_center = $hotel['distance_to_center'];
-                    echo '<br>';
-                    echo '-------------';
-                    echo '<br>';
-                }
-            ?>
+            <table class="table table-dark table-hover">
+                <thead>
+                    <tr class="text-center">
+                        <th scope="col">Name</th>
+                        <th scope="col">Description</th>
+                        <th scope="col">Parking</th>
+                        <th scope="col">Vote</th>
+                        <th scope="col">Distance to center</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                        foreach ($hotels as $hotel) {
+                            echo "<tr class='text-center'>
+                            <td>".$hotel["name"]."</td>
+                            <td>".$hotel["description"]."</td>";
+                            
+                            // ciclo if parcheggio 
+                            if ($hotel['parking'] == true) {
+                                echo "<td>Yes private parking</td>";
+                            } else {
+                                echo "<td>No private parking</td>";
+                            }
+                            
+                            echo "<td>".$hotel["vote"]."</td>
+                            <td>".$hotel["distance_to_center"]." km</td>
+                            </tr>";
+                        }
+                    ?>
+                </tbody>
+            </table>
         </div>
     </body>
 
