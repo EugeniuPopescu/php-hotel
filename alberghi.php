@@ -53,6 +53,10 @@
 
     ?>
 
+    <?php
+        $voto = $_GET["vote"] ?? "";
+    ?>
+
     <body class="text-white bg-dark">
         <div class="container">
             <h1 class="text-center my-3">Hotels</h1>
@@ -67,30 +71,50 @@
                         <th scope="col">Distance to center</th>
                     </tr>
                 </thead>
+                <!-- stampo gli hotel -->
                 <tbody>
                     <?php
                         foreach ($hotels as $hotel) {
-                            echo "<tr class='text-center'>
-                            <td>".$hotel["name"]."</td>
-                            <td>".$hotel["description"]."</td>";
-                            
-                            // ciclo if parcheggio 
-                            if ($hotel['parking'] == true) {
-                                echo "<td>Yes private parking</td>";
-                            } else {
-                                echo "<td>No private parking</td>";
+                            if ($voto <= $hotel["vote"]) {
+                                echo "<tr class='text-center'>
+                                <td>".$hotel["name"]."</td>
+                                <td>".$hotel["description"]."</td>";
+                                
+                                // ciclo if parcheggio 
+                                if ($hotel['parking'] == true) {
+                                    echo "<td>Yes private parking</td>";
+                                } else {
+                                    echo "<td>No private parking</td>";
+                                }
+                                
+                                echo "<td>".$hotel["vote"]."</td>
+                                <td>".$hotel["distance_to_center"]." km</td>
+                                </tr>";
+
+                            } else if ($voto == "") {
+                                echo "<tr class='text-center'>
+                                <td>".$hotel["name"]."</td>
+                                <td>".$hotel["description"]."</td>";
+                                
+                                // ciclo if parcheggio 
+                                if ($hotel['parking'] == true) {
+                                    echo "<td>Yes private parking</td>";
+                                } else {
+                                    echo "<td>No private parking</td>";
+                                }
+                                
+                                echo "<td>".$hotel["vote"]."</td>
+                                <td>".$hotel["distance_to_center"]." km</td>
+                                </tr>";
                             }
-                            
-                            echo "<td>".$hotel["vote"]."</td>
-                            <td>".$hotel["distance_to_center"]." km</td>
-                            </tr>";
                         }
                     ?>
                 </tbody>
             </table>
+            <!-- link di ritorno -->
+            <a href="ricerca.php">Ricerca</a>
         </div>
     </body>
-
     <!-- script bootstrap -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </html>
