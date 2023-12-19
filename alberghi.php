@@ -81,12 +81,15 @@
                                 <td>".$hotel["name"]."</td>
                                 <td>".$hotel["description"]."</td>";
                                 
+                                // ternario
+                                echo ($hotel['parking'] == true ? "<td>Yes private parking</td>" : "<td>No private parking</td>");
+
                                 // ciclo if parcheggio 
-                                if ($hotel['parking'] == true) {
-                                    echo "<td>Yes private parking</td>";
-                                } else {
-                                    echo "<td>No private parking</td>";
-                                }
+                                // if ($hotel['parking'] == true) {
+                                //     echo "<td>Yes private parking</td>";
+                                // } else {
+                                //     echo "<td>No private parking</td>";
+                                // }
                                 
                                 echo "<td>".$hotel["vote"]."</td>
                                 <td>".$hotel["distance_to_center"]." km</td>
